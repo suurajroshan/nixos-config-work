@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgsUnstable, lib, ... }:
 
 {
   imports =
@@ -11,8 +11,12 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.efiSupport = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -93,6 +97,10 @@
     ];
   };
 
+  programs.neovim = {
+  	enable=true;
+	defaultEditor=true;
+  };
   # Install firefox.
   programs.firefox.enable = true;
 
