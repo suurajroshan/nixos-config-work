@@ -53,7 +53,7 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.enable = false;
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
@@ -84,6 +84,21 @@
     #media-session.enable = true;
   };
 
+  services.greetd = {
+  	enable = true;
+	settings = {
+		default_session = {
+			command = "${pkgs.tuigreet}/bin/tuigreet --asterisks --remember --remember-user-session --time --cmd niri";
+			user = "greeter";
+		};
+	};
+  };
+  systemd.user.services.niri.enableDefaultPath = false;
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.swaylock = {};
+  programs.waybar.enable = true;
+  services.power-profiles-daemon.enable = false;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -101,6 +116,7 @@
   	enable=true;
 	defaultEditor=true;
   };
+  programs.niri.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -110,6 +126,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+	alacritty
 	auto-cpufreq
 	git
 	github-cli
@@ -121,6 +138,15 @@
 	zotero
 	zoxide
   	#wget
+	niri
+	dms-shell
+	fuzzel
+	swaylock
+	mako
+	swayidle
+	tuigreet
+	quickshell
+	kitty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
