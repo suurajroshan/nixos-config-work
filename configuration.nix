@@ -53,8 +53,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = false;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = false;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -126,27 +126,30 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	alacritty
-	auto-cpufreq
-	git
-	github-cli
-	mattermost
-	neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-	obsidian
-	tre-command
-	zed-editor
-	zotero
-	zoxide
-  	#wget
-	niri
-	dms-shell
-	fuzzel
-	swaylock
-	mako
-	swayidle
-	tuigreet
-	quickshell
-	kitty
+  	auto-cpufreq
+  	git
+  	github-cli
+  	mattermost-desktop
+  	neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  	obsidian
+  	tre-command
+  	zed-editor
+  	zotero
+  	zoxide
+   	#wget
+
+    # niri dependencies
+    niri
+  	dms-shell
+  	fuzzel
+  	swaylock
+  	mako
+  	swayidle
+  	tuigreet
+  	quickshell
+
+    # console
+  	kitty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -160,7 +163,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
