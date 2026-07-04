@@ -10,7 +10,7 @@ in {
     inherit system;
 
     modules = [
-      ./configuration.nix
+      ./system/configuration.nix
       inputs.self.nixosModules.zen-browser
     ];
 

@@ -2,15 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgsUnstable, lib, ... } : {
+{ inputs, config, pkgs, pkgsUnstable, lib, ... } : {
 
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/services.nix
-      ./modules/programs.nix
-      ./modules/packages.nix
-    ];
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../modules/services.nix
+    ../modules/programs.nix
+    ../modules/packages.nix
+  ];
 
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
