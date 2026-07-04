@@ -1,4 +1,4 @@
-{config, pkgs, inputs, ...}:
+{config, pkgs, inputs, lib, ...}:
 
 {
  	programs.neovim = {
@@ -6,6 +6,7 @@
  	      defaultEditor=true;
  	};
  	programs.niri.enable = true;
+	programs.waybar.enable = lib.mkForce false;
  	# Install firefox.
  	programs.firefox.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
