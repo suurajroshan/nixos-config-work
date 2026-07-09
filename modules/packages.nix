@@ -9,17 +9,18 @@
   environment.systemPackages = with pkgs; [
     alacritty
     auto-cpufreq
+    vscode
     git
     github-cli
     mattermost-desktop
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     obsidian
     slack
-   	tre-command
-   	zed-editor
-   	zotero
-   	zoxide
-   	#wget
+    tre-command
+    zed-editor
+zotero
+zoxide
+#wget
 
     # niri dependencies
     niri
