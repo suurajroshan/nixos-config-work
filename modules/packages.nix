@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     auto-cpufreq
+    btop
     vscode
     git
     github-cli
@@ -17,10 +18,9 @@
     obsidian
     slack
     tre-command
-    zed-editor
-zotero
-zoxide
-#wget
+    zotero
+    zoxide
+    #wget
 
     # niri dependencies
     niri
